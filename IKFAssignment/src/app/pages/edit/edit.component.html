@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <h2>{{header}}</h2>
+
+    <form (ngSubmit)="onSubmit(f)" #f = "ngForm">
+        <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" class="form-control" [(ngModel)]="user.Name" name = "Name">
+        </div>
+        <div class="form-group">
+            <label for="">Date Of Birth</label>
+            <input type="date"  class="form-control" data-provide="datepicker" [ngModel]="user.DOB|date : 'yyyy-MM-dd'" (ngModelChange)="DateChange($event)" name = "DOB">
+        </div>
+        <div class="form-group">
+            <label for="">Designation</label>
+            <input type="text" class="form-control" [(ngModel)]="user.Designation" name = "Designation">
+        </div>
+        <div class="form-group">
+            <label for="" class="pr-3">Skill</label>
+            <select class="form-control" name="Choose Skill" id="Skill"  [(ngModel)]="user.Skill" name = "Skill">
+                <option *ngFor="let skill of skills" [value]="skill.SkillName">{{skill.SkillName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save User</button>
+        </div>
+    </form>
+</div>
